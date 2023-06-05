@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Async Function Example</title>
+    <script>
+      function asyncFunction() {
+        return new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            resolve('Async function completed');
+          }, 2000);
+        });
+      }
+      
+      asyncFunction()
+        .then(function(result) {
+          alert(result);
+          return 'First callback completed';
+        })
+        .then(function(result) {
+          alert(result);
+          return 'Second callback completed';
+        })
+        .then(function(result) {
+          alert(result);
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Async Function Example</h1>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Caesar Cipher</title>
+    </head>
+
+    <body>
+        <h1>Caesar Cipher</h1>
+        <textarea id="text" name="text" rows="4" cols="50" placeholder="Enter text (lowercase only)"></textarea><br><br>
+        <input type="number" id="shift" name="shift" placeholder="Enter shift"><br><br>
+        <button onclick="caesarCipher()">Encrypt</button><br><br>
+        <p id="result"></p>
+
+        <script>
+            function caesarCipher() {
+                let text = document.getElementById("text").value;
+                let shift = parseInt(document.getElementById("shift").value);
+                let result = document.getElementById("result");
+                let alphabet = "abcdefghijklmnopqrstuvwxyz";
+                let encryptedText = "";
+                for (let i = 0; i < text.length; i++) {
+                    let char = text.charAt(i);
+                    let index = alphabet.indexOf(char);
+                    if (index !== -1) {
+                        index = (index + shift) % 26;
+                        char = alphabet.charAt(index);
+                    }
+                    encryptedText += char;
+                }
+                result.innerHTML = "Encrypted text: " + encryptedText;
+            }
+        </script>
+    </body>
+
+</html>

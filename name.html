@@ -1,0 +1,99 @@
+<!-- Create a form element to get the object properties from the user -->
+<form id="form">
+    <!-- Use a div element to wrap each input element and label -->
+    <div>
+        <!-- Create an input element for the name property -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <!-- Create an input element for the Dept property -->
+        <label for="Dept">Dept:</label>
+        <input type="text" id="Dept" name="Dept" required>
+    </div>
+    <div>
+        <!-- Create an input element for the id property -->
+        <label for="id">Id:</label>
+        <input type="number" id="id" name="id" required>
+    </div>
+    <!-- Create a submit button to submit the form -->
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Create a div element to display the output -->
+<div id="output"></div>
+
+<!-- Add a script tag to write the JavaScript code -->
+<script>
+    // Get the form and output elements from the document
+    let form = document.getElementById("form");
+    let output = document.getElementById("output");
+
+    // Add an event listener to the form element
+    form.addEventListener("submit", function (event) {
+        // Prevent the default action of submitting the form
+        event.preventDefault();
+        // Get the values of the input elements
+        let name = form.elements["name"].value;
+        let Dept = form.elements["Dept"].value;
+        let id = form.elements["id"].value;
+        // Create an object with the input values as properties
+        let obj = { name, Dept, id };
+        // Call the listProperties function on the object
+        let result = listProperties(obj);
+        // Display the result in the output element
+        output.textContent = result;
+    });
+
+    // Define a function to list the properties of a JavaScript object
+    function listProperties(obj) {
+        // Initialize an empty array for the properties
+        let properties = [];
+        // Loop through the keys of the object
+        for (let key in obj) {
+            // Get the value of the key
+            let value = obj[key];
+            // Push the value to the properties array
+            properties.push(value);
+        }
+        // Join the properties array with a comma and a space as the separator
+        let output = properties.join(", ");
+        // Return the output
+        return output;
+    }
+</script>
+
+<!-- Add a style tag to write some CSS code -->
+<style>
+    /* Use flexbox to align and space out the elements */
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Add some margin and padding to the div elements */
+    div {
+        margin: 5px;
+        padding: 5px;
+    }
+
+    /* Add some border and background color to the input elements */
+    input {
+        border: 2px solid black;
+        background-color: lightgray;
+    }
+
+    /* Add some border and background color to the button element */
+    button {
+        border: 2px solid black;
+        background-color: lightgreen;
+    }
+
+    /* Add some font size and color to the output element */
+    output {
+        font-size: 20px;
+        color: blue;
+    }
+</style>

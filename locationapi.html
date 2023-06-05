@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<title>Latitude and longitude of the user's position</title>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="text-align:center">
+   <h1 style="color: rgba(14, 21, 126, 0.908)">Welcome!</h1>
+   <h3>Click the button to identify the users location</h3>
+   <div>
+      <button onclick="myGeolocator()">
+         Get location
+      </button>
+      <div id="result"></div>
+   </div>   
+   <script>
+      let result = document.getElementById("result");
+      let userLocation = navigator.geolocation; 
+      //navigator.geolocation is geolocation API
+      function myGeolocator() {
+         if(userLocation) {
+            userLocation.getCurrentPosition(success);
+         } else {
+            "The geolocation API is not supported by your browser.";
+         }
+      }
+      function success(data) {
+         let lat = data.coords.latitude;
+         let long = data.coords.longitude;
+         result.innerHTML = "Latitude: "
+         + lat
+         + "<br>Longitude: "
+         + long;
+      }
+   </script>
+</body>
+</html>
+
+
+<!--Sure! The JavaScript code within the script tag is used to get the user's location using the Geolocation API. Here's a brief explanation of how it works:
+
+1. The `result` variable is declared and assigned the value of the element with the id `result`.
+2. The `userLocation` variable is declared and assigned the value of `navigator.geolocation`, which is an object representing the Geolocation API.
+3. The `myGeolocator` function is defined. This function checks if the Geolocation API is available in the user's browser by checking if `userLocation` is truthy. If it is, the function calls `userLocation.getCurrentPosition(success)`, which gets the user's current position and passes it to the `success` function as an argument. If `userLocation` is falsy, meaning that the Geolocation API is not supported by the user's browser, an error message is displayed.
+4. The `success` function is defined. This function takes one argument, `data`, which represents the user's position. The function extracts the latitude and longitude values from `data.coords.latitude` and `data.coords.longitude`, respectively. These values are then displayed in the `result` element using innerHTML.
+
+I hope this helps! Is there anything else you would like to know?-->

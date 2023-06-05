@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Arithmetic Operations</title>
+    </head>
+
+    <body>
+        <h1>Arithmetic Operations</h1>
+        <button onclick="performOperations()">Perform Operations</button><br><br>
+        <p id="result"></p>
+
+        <script>
+            async function performOperations() {
+                let result = document.getElementById("result"); // Get the result element
+                let x = 5; // Set the value of x
+                let y = 10; // Set the value of y
+                result.innerHTML += "Starting operations...<br>"; // Display a message
+
+                let sum = await new Promise((resolve) => calculateSum(x, y, resolve)); // Calculate the sum of x and y
+                result.innerHTML += "Sum: " + sum + "<br>"; // Display the result
+
+                let product = await new Promise((resolve) => calculateProduct(x, y, resolve)); // Calculate the product of x and y
+                result.innerHTML += "Product: " + product + "<br>"; // Display the result
+
+                let quotient = await new Promise((resolve) => calculateQuotient(x, y, resolve)); // Calculate the quotient of x and y
+                result.innerHTML += "Quotient: " + quotient + "<br>"; // Display the result
+
+                let remainder = await new Promise((resolve) => calculateRemainder(x, y, resolve)); // Calculate the remainder of x and y
+                result.innerHTML += "Remainder: " + remainder + "<br>"; // Display the result
+            }
+
+            function calculateSum(x, y, resolve) {
+                setTimeout(() => {
+                    resolve(x + y);
+                }, 1000);
+            }
+
+            function calculateProduct(x, y, resolve) {
+                setTimeout(() => {
+                    resolve(x * y);
+                }, 1000);
+            }
+
+            function calculateQuotient(x, y, resolve) {
+                setTimeout(() => {
+                    resolve(x / y);
+                }, 1000);
+            }
+
+            function calculateRemainder(x, y, resolve) {
+                setTimeout(() => {
+                    resolve(x % y);
+                }, 1000);
+            }
+        </script>
+    </body>
+
+</html>

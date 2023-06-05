@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Weight Converter</title>
+    </head>
+
+    <body>
+        <h1>Weight Converter</h1>
+        <input type="number" id="weight" name="weight" placeholder="Enter weight (kg)"><br><br>
+        <button onclick="convertWeight()">Convert</button><br><br>
+        <p id="result"></p>
+
+        <script>
+            let convertWeight = () => {
+                let weight = parseInt(document.getElementById("weight").value);
+                let result = document.getElementById("result");
+                let lbs = weight * 2.2;
+                if (lbs >150) {
+                    result.innerHTML = "Obese";
+                } 
+                else if (lbs >= 100 && lbs <= 150) {
+                    result.innerHTML = "You are ok";
+                } 
+                else {
+                    result.innerHTML = "Underweight";
+                }
+            }
+        </script>
+    </body>
+
+</html>

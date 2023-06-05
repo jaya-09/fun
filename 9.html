@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>String Manipulation</title>
+    </head>
+
+    <body>
+        <h1>String Manipulation</h1>
+        <textarea id="text" name="text" rows="4" cols="50" placeholder="Enter text"></textarea><br><br>
+        <button onclick="capitalizeWords()">Capitalize Words</button><br><br>
+        <button onclick="splitWords()">Split Words</button><br><br>
+        <p id="result"></p>
+
+        <script>
+            function capitalizeWords() {
+                let text = document.getElementById("text").value;
+                let result = document.getElementById("result");
+                let words = text.split(" ");
+                for (let i = 0; i < words.length; i++) {
+                    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+                }
+                result.innerHTML = "Capitalized text: " + words.join(" ");
+            }
+
+            function splitWords() {
+                let text = document.getElementById("text").value;
+                let result = document.getElementById("result");
+                let words = text.split(" ");
+                result.innerHTML = "Array of words: [" + words.join(", ") + "]";
+            }
+        </script>
+    </body>
+
+</html>

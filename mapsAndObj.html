@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var myMap = new Map()
+        var myObj = {}
+        function addToMap(key, val){
+            myMap.set(key, val);
+            document.getElementById('mapStatus').innerHTML = "Pair added to the map."
+        }
+
+        function addToObj(key, val){
+            myObj[key] = val;
+        }
+
+        function displayMap(){
+            console.log(myMap);
+            var s = "";
+            for(let [key, value] of myMap){
+                s += "<br></br>" + key + " => " + value + "<br></br>";
+            }
+            document.getElementById('map').innerHTML = s;
+        }
+
+        function displayObj(){
+            console.log(myObj)
+        }
+
+    </script>
+</head>
+<body>
+    <p>MAP</p>
+    <input type="text" placeholder="key" id="map_key">
+    <input type="text" placeholder="value" id="map_val">
+    <p id="mapStatus"></p>
+    <p>Current map contents : <span id="map"></span></p>
+    <button onclick="addToMap(document.getElementById('map_key').value, document.getElementById('map_val').value)">ADD+</button>
+    <button onclick="displayMap()">SHOW MAP</button>
+</body>
+</html>

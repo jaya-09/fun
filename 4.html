@@ -1,0 +1,43 @@
+<!--Write a JavaScript program to store values into a map, and to retrieve value 
+    from the map using key, to iterate over the map -->
+
+    <!DOCTYPE html>
+    <html>
+    
+        <head>
+            <title>JavaScript Maps</title>
+        </head>
+    
+        <body>
+            <h1>JavaScript Maps</h1>
+            <input type="text" id="inputKey" placeholder="Enter a key" />
+            <input type="text" id="inputValue" placeholder="Enter a value" />
+            <button onclick="add()">Add</button>
+            <button onclick="get()">Get</button>
+            <p>Output: <span id="output"></span></p>
+    
+            <script>
+                let myMap = new Map();
+
+                function add() {
+                    let inputKey = document.getElementById("inputKey").value;
+                    let inputValue = document.getElementById("inputValue").value;
+                    myMap.set(inputKey, inputValue);
+                    let output = document.getElementById("output");
+                    output.innerHTML += `Added ${inputKey} = ${inputValue}<br>`;
+                }
+
+                function get() {
+                    let inputKey = document.getElementById("inputKey").value;
+                    let output = document.getElementById("output");
+                    if (myMap.has(inputKey)) {
+                        let value = myMap.get(inputKey);
+                        output.innerHTML += `${inputKey} = ${value}<br>`;
+                    } else {
+                        output.innerHTML += `${inputKey} is not in the map<br>`;
+                    }
+                }
+            </script>
+        </body>
+    
+    </html>

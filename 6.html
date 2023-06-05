@@ -1,0 +1,37 @@
+<!--Apply JavaScript Arrow function to reverse a given Number.
+     Given Number = 12243; Expected Output: 34221    -->
+
+     <!DOCTYPE html>
+    <html>
+    
+        <head>
+            <title>Reverse Number</title>
+        </head>
+    
+        <body>
+            <h1>Reverse Number</h1>
+            <input type="number" id="inputNumber" placeholder="Enter a number" />
+            <button onclick="reverse1()">Reverse</button>
+            <p>Reversed Number: <span id="output"></span></p>
+    
+            <script>
+                function reverseNumber (num)  {
+                    let str = num.toString();
+                    let arr = str.split("");
+                    arr.reverse();
+                    let reversed = arr.join("");
+                    let result = Number(reversed);
+                    return result;
+                };
+
+                function reverse1() {
+                    let inputNumber = document.getElementById("inputNumber").value;
+                    let output = document.getElementById("output");
+                    output.innerHTML = reverseNumber(inputNumber);
+                }
+            </script>
+        </body>
+    
+    </html>
+
+

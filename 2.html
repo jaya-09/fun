@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>JavaScript Promises</title>
+    </head>
+
+    <body>
+        <h1>JavaScript Promises</h1>
+        <button onclick="run()">Run</button>
+        <p>Output: <span id="output"></span></p>
+
+        <script>
+            const myPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Success!");
+                }, 1000);
+            });
+
+            function run() {
+                let output = document.getElementById("output");
+                myPromise
+                    .then(
+                        result => {
+                            output.innerHTML += result + "<br>";
+                            return "Second success!";
+                        },
+                        error => {
+                            output.innerHTML += error + "<br>";
+                        }
+                    )
+                    .then(
+                        result => {
+                            output.innerHTML += result + "<br>";
+                        },
+                        error => {
+                            output.innerHTML += error + "<br>";
+                        }
+                    );
+            }
+        </script>
+    </body>
+
+</html>

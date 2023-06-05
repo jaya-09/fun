@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Jump Search</title>
+    </head>
+
+    <body>
+        <h1>Jump Search</h1>
+        <label for="key">Enter key:</label>
+        <input type="text" id="key" name="key"><br><br>
+        <label for="list">Enter list of numbers (comma separated):</label><br>
+        <textarea id="list" name="list" rows="4" cols="50"></textarea><br><br>
+        <button onclick="jumpSearch()">Search</button><br><br>
+        <p id="result"></p>
+
+        <script>
+            function jumpSearch() {
+                let key = document.getElementById("key").value;
+                let list = document.getElementById("list").value.split(",").map(Number);
+                let result = document.getElementById("result");
+                let n = list.length;
+                let step = Math.floor(Math.sqrt(n));
+                let prev = 0;
+                while (list[Math.min(step, n) - 1] < key) {
+                    prev = step;
+                    step += Math.floor(Math.sqrt(n));
+                    if (prev >= n) {
+                        result.innerHTML = "Key not found";
+                        return;
+                    }
+                }
+                while (list[prev] < key) {
+                    prev++;
+                    if (prev == Math.min(step, n)) {
+                        result.innerHTML = "Key not found";
+                        return;
+                    }
+                }
+                if (list[prev] == key) {
+                    result.innerHTML = "Key found at index " + prev;
+                    return;
+                }
+                result.innerHTML = "Key not found";
+            }
+        </script>
+    </body>
+
+</html>

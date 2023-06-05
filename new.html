@@ -1,0 +1,80 @@
+<!-- Create a form element to get the weight in kg from the user -->
+<form id="form">
+  <!-- Create an input element for the weight -->
+  <label for="weight">Weight in kg:</label>
+  <input type="number" id="weight" name="weight" required>
+  <!-- Create a submit button to submit the form -->
+  <button type="submit">Submit</button>
+</form>
+
+<!-- Create a div element to display the output -->
+<div id="output"></div>
+
+<!-- Add a script tag to write the JavaScript code -->
+<script>
+  // Get the form and output elements from the document
+  let form = document.getElementById("form");
+  let output = document.getElementById("output");
+
+  // Add an event listener to the form element
+  form.addEventListener("submit", function (event) {
+    // Prevent the default action of submitting the form
+    event.preventDefault();
+    // Get the value of the input element
+    let weight = Number(form.elements["weight"].value);
+    // Call the arrow function on the weight
+    let result = convertAndCheck(weight);
+    // Display the result in the output element
+    output.textContent = result;
+  });
+
+  // Define an arrow function that converts kg to lbs and checks the condition
+  let convertAndCheck = kg => {
+    // Convert kg to lbs using the formula
+    let lbs = kg * 2.2;
+    // Check if lbs is greater than 150
+    if (lbs > 150) {
+      // Return "obese"
+      return "obese";
+    }
+    // Check if lbs is between 100 and 150
+    else if (lbs >= 100 && lbs <= 150) {
+      // Return "you are ok"
+      return "you are ok";
+    }
+    // Check if lbs is less than 100
+    else if (lbs < 100) {
+      // Return "underweight"
+      return "underweight";
+    }
+  };
+</script>
+
+<!-- Add a style tag to write some CSS code -->
+<style>
+  /* Use flexbox to align and space out the elements */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Add some margin and padding to the input element */
+  input {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  /* Add some border and background color to the button element */
+  button {
+    border: 2px solid black;
+    background-color: lightgreen;
+  }
+
+  /* Add some font size and color to the output element */
+  output {
+    font-size: 20px;
+    color: blue;
+  }
+</style>

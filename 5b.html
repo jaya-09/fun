@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Email Validator</title>
+    </head>
+
+    <body>
+        <h1>Email Validator</h1>
+        <input type="text" id="email" name="email" placeholder="Enter email"><br><br>
+        <button onclick="validateEmail()">Validate</button><br><br>
+        <p id="result"></p>
+
+        <script>
+            function validateEmail() {
+                let email = document.getElementById("email").value;
+                let result = document.getElementById("result");
+                let regex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
+                if (regex.test(email)) {
+                    result.innerHTML = "Valid email";
+                } else {
+                    result.innerHTML = "Invalid email";
+                }
+            }
+        </script>
+    </body>
+
+</html>
+
+
+
+<!--
+    function validateEmail(email) {
+    let atIndex = email.indexOf("@");
+    let dotIndex = email.lastIndexOf(".");
+    if (atIndex === -1 || dotIndex === -1 || atIndex > dotIndex) {
+        return false;
+    }
+    let username = email.slice(0, atIndex);
+    let mailServer = email.slice(atIndex + 1, dotIndex);
+    let topLevelDomain = email.slice(dotIndex + 1);
+    let usernameRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+$/;
+    let mailServerRegex = /^[a-zA-Z0-9-]+$/;
+    let topLevelDomainRegex = /^[a-zA-Z]{2,}$/;
+    if (!usernameRegex.test(username) || !mailServerRegex.test(mailServer) || !topLevelDomainRegex.test(topLevelDomain)) {
+        return false;
+    }
+    return true;
+}
+
+-->

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>JavaScript Sets</title>
+    </head>
+
+    <body>
+        <h1>JavaScript Sets</h1>
+        <input type="number" id="inputValue" placeholder="Enter a value" />
+        <button onclick="add()">Add</button>
+        <button onclick="check()">Check</button>
+        <p>Output: <span id="output"></span></p>
+
+        <script>
+            let mySet = new Set();
+
+            function add() {
+                let inputValue = document.getElementById("inputValue").value;
+                mySet.add(Number(inputValue));
+                let output = document.getElementById("output");
+                //output.innerHTML += `Added ${inputValue}<br>`;
+                output.innerHTML +="added "+ inputValue;
+            }
+
+            function check() {
+                let inputValue = document.getElementById("inputValue").value;
+                let output = document.getElementById("output");
+                if (mySet.has(Number(inputValue))) {
+                    output.innerHTML += `${inputValue} is in the set<br>`;
+                } else {
+                    output.innerHTML += `${inputValue} is not in the set<br>`;
+                }
+            }
+        </script>
+    </body>
+
+</html>

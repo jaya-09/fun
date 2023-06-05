@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count</title>
+    <script>
+        // Function to increment the visitor count
+function incrementVisitorCount() {
+  // Check if the visitor count exists in local storage
+  if (localStorage.getItem('visitorCount')) {
+    // If it exists, increment the count by 1
+    let count = parseInt(localStorage.getItem('visitorCount'));
+    count++;
+    localStorage.setItem('visitorCount', count.toString());
+  } else {
+    // If it doesn't exist, set the count to 1
+    localStorage.setItem('visitorCount', '1');
+  }
+
+  
+
+}
+
+// Function to display the visitor count on the screen
+function displayVisitorCount() {
+    const count = localStorage.getItem('visitorCount') || '0';
+    document.getElementById("output").innerHTML = count
+}
+
+// Increment the visitor count and display it
+
+
+    </script>
+</head>
+<body onload="incrementVisitorCount()">
+    <button onclick="displayVisitorCount()">Get Count</button>
+    <p id="output"></p>
+</body>
+</html>

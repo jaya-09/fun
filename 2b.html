@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Set vs Array</title>
+    </head>
+
+    <body>
+        <h1>Set vs Array</h1>
+
+        <script>
+            let myArray = [];
+            let mySet = new Set();
+
+            // Add 1000000 elements to the array and set
+            for (let i = 0; i < 1000000; i++) {
+                myArray.push(i);
+                mySet.add(i);
+            }
+
+            // Search for a value in the array
+            let t0 = performance.now();
+            myArray.includes(999999);
+            let t1 = performance.now();
+            console.log("Time to search in array:", t1 - t0);
+
+            // Search for a value in the set
+            t0 = performance.now();
+            mySet.has(999999);
+            t1 = performance.now();
+            console.log("Time to search in set:", t1 - t0);
+        </script>
+    </body>
+
+</html>

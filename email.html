@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Email Validator</title>
+  </head>
+
+  <body>
+    <h1>Email Validator</h1>
+    <input type="text" id="email" name="email" placeholder="Enter email"><br><br>
+    <button onclick="validateEmail()">Validate</button><br><br>
+    <p id="result"></p>
+
+    <script>
+      function validateEmail() {
+        let email = document.getElementById("email").value;
+        let result = document.getElementById("result");
+        let regex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
+        if (regex.test(email)) {
+          result.innerHTML = "Valid email";
+        } else {
+          result.innerHTML = "Invalid email";
+        }
+      }
+    </script>
+  </body>
+
+</html>
+
+
+<!--
+  Sure! This is a regular expression that can be used to validate email addresses. Here's a breakdown of how it works:
+
+- `^` and `$`: These symbols indicate the start and end of the string, respectively. This ensures that the entire string must match the regular expression.
+- `[a-zA-Z0-9!#$%&'*+\-\/=?^_`{|}~]+`: This part of the regular expression matches one or more characters that are letters (uppercase or lowercase), numbers, or any of the special characters listed. These characters are allowed in the local part of an email address (the part before the `@` symbol).
+- `(?:\.[a-zA-Z0-9!#$%&'*+\-\/=?^_`{|}~]+)*`: This part of the regular expression matches zero or more occurrences of a dot followed by one or more characters that are letters (uppercase or lowercase), numbers, or any of the special characters listed. This allows for dots to appear in the local part of an email address, as long as they are not the first or last character and are not consecutive.
+- `@`: This symbol must appear in the email address to separate the local part from the domain part.
+- `(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+`: This part of the regular expression matches one or more occurrences of a sequence that starts with a letter or number, followed by zero or more letters, numbers, or hyphens, and ends with a dot. This allows for subdomains in the domain part of an email address.
+- `[a-zA-Z]{2,}`: This part of the regular expression matches two or more letters. This represents the top-level domain of an email address, which must be at least two characters long.
+
+This regular expression can be used to validate email addresses by checking if a given string matches the pattern. For example:
+
+```javascript
+const emailRegex = /^[a-zA-Z0-9!#$%&'*+\-\/=?^_`{|}~]+(?:\.[a-zA-Z0-9!#$%&'*+\-\/=?^_`{|}~]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+
+const testEmail = (email) => {
+  if (emailRegex.test(email)) {
+    console.log(`${email} is a valid email address.`);
+  } else {
+    console.log(`${email} is not a valid email address.`);
+  }
+}
+
+testEmail('example@example.com'); // example@example.com is a valid email address.
+testEmail('example@example'); // example@example is not a valid email address.
+```
+
+I hope this helps! Let me know if you have any questions.
+-->
+
+<!--
+  Sure! This part of the regular expression `(?:\.[a-zA-Z0-9!#$%&'*+\-\/=?^_{|}~]+)*` matches zero or more occurrences of a dot followed by one or more characters that are letters (uppercase or lowercase), numbers, or any of the special characters listed. Here's a breakdown of how it works:
+
+- `(?:)`: This is a non-capturing group. It groups the characters inside the parentheses together so that they can be treated as a single unit, but it doesn't capture the matched text. This means that the matched text won't be included in the array of captured groups returned by the `match` method or the `RegExp.exec` method.
+- `\.`: This matches a dot character. The dot must be escaped with a backslash because it has a special meaning in regular expressions (it matches any character except for line terminators).
+- `[a-zA-Z0-9!#$%&'*+\-\/=?^_{|}~]+`: This part of the regular expression matches one or more characters that are letters (uppercase or lowercase), numbers, or any of the special characters listed. These characters are allowed to appear after a dot in the local part of an email address.
+- `*`: This symbol indicates that the preceding group (the non-capturing group containing the dot and the character set) can appear zero or more times.
+
+This part of the regular expression allows for dots to appear in the local part of an email address, as long as they are not the first or last character and are not consecutive. For example, `example.email@example.com` is a valid email address because it has a dot in the local part that is not the first or last character and is not consecutive with another dot.
+
+I hope this helps! Let me know if you have any questions.
+
+
+
+
+This part of the regular expression `@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/` matches the domain part of an email address. Here's a breakdown of how it works:
+
+- `@`: This symbol must appear in the email address to separate the local part from the domain part.
+- `(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+`: This part of the regular expression matches one or more occurrences of a sequence that starts with a letter or number, followed by zero or more letters, numbers, or hyphens, and ends with a dot. This allows for subdomains in the domain part of an email address.
+  - `(?:[a-zA-Z0-9]`: This non-capturing group matches a single letter or number. This represents the first character of a subdomain.
+  - `(?:[a-zA-Z0-9-]*[a-zA-Z0-9])?`: This non-capturing group matches zero or one occurrence of a sequence that starts with zero or more letters, numbers, or hyphens, followed by a letter or number. This represents the middle and last characters of a subdomain.
+  - `\.)`: This matches a dot character. The dot must be escaped with a backslash because it has a special meaning in regular expressions (it matches any character except for line terminators).
+  - `+`: This symbol indicates that the preceding group (the non-capturing group containing the subdomain pattern) can appear one or more times.
+- `[a-zA-Z]{2,}`: This part of the regular expression matches two or more letters. This represents the top-level domain of an email address, which must be at least two characters long.
+- `$`: This symbol indicates the end of the string. This ensures that the entire string must match the regular expression.
+
+This part of the regular expression ensures that the domain part of an email address is valid. For example, `example@example.com` is a valid email address because it has a valid domain part (`example.com`), while `example@.com` is not a valid email address because it has an invalid domain part (`.com`).
+
+I hope this helps! Let me know if you have any questions.
+-->

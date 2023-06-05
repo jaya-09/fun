@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Object Iteration Example</title>
+    <script>
+      var student = { name: "Mohan Kumar", Dept: "ISE", id: 46 };
+      
+      function iterateObject() {
+        for (var prop in student) {
+          document.getElementById("output").textContent += student[prop] + "\n";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Object Iteration Example</h1>
+    
+    <button onclick="iterateObject()">Iterate Object</button>
+    
+    <pre id="output"></pre>
+  </body>
+</html>
